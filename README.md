@@ -61,24 +61,12 @@ The **SNCFT REST API** is a comprehensive solution for the **Tunisian National R
 1. Enter **origin**, **destination**, and **date** to search for trains.
 2. View available travel options and ticket prices.
 3. Purchase tickets securely using **Stripe**.
-4. Receive tickets via email and track train locations in real time.
+4. Receive tickets via email and track train locations in real-time.
 
 ### 🔹 Admin Workflow:
 1. Log in to add, edit, or delete travel records.
-2. Update train locations using **GoMaps API**.
+2. Update train locations.
 3. Monitor user transactions and manage ticketing data.
 
 ---
 
-## 📦 Installation
-
-### 🔹 Prerequisites
-- Python 3.8 or higher
-- PostgreSQL database
-- API keys for **GoMaps**, **Stripe**, and **SendGrid**
-
-### 🔹 Steps
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/<your-repo-name>/sncft-rest-api.git
-   cd sncft-rest-api
