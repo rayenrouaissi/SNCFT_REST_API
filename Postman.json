@@ -1,0 +1,475 @@
+{
+	"info": {
+		"_postman_id": "your_unique_id",
+		"name": "SNCFT REST API",
+		"description": "A REST API for SNCFT transportation services.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+        {
+			"name": "User Authentication",
+			"description": "Endpoints for user signup and login",
+			"item": [
+				{
+					"name": "Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Name\": \"John Doe\",\n    \"Email\": \"john.doe@example.com\",\n    \"Password\": \"securepassword123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+                {
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+                                {
+                                    "key": "username",
+                                    "value": "john.doe@example.com",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "securepassword123",
+                                    "type": "text"
+                                }
+                            ]
+						},
+						"url": {
+							"raw": "http://localhost:8000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Endpoints",
+             "description": "Endpoints available for regular users",
+			"item": [
+				{
+					"name": "Get Directions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/get-directions/?origin=Tunis&destination=Sousse&travel_date=2025-01-18",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"get-directions",
+								""
+							],
+							"query": [
+								{
+									"key": "origin",
+									"value": "Tunis"
+								},
+								{
+									"key": "destination",
+									"value": "Sousse"
+								},
+                                {
+									"key": "travel_date",
+									"value": "2025-01-18"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Ticket Price",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/check-price/?origin=Tunis&destination=Sousse&date=2025-01-18&passenger_type=student",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"check-price",
+								""
+							],
+							"query": [
+								{
+									"key": "origin",
+									"value": "Tunis"
+								},
+								{
+									"key": "destination",
+									"value": "Sousse"
+								},
+								{
+									"key": "date",
+									"value": "2025-01-18"
+								},
+								{
+									"key": "passenger_type",
+									"value": "student"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+                {
+					"name": "Create Checkout Session",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 2000, \n    \"currency\": \"usd\",\n    \"email\": \"john.doe@example.com\",\n    \"success_url\": \"http://localhost:8501/success\",\n    \"quantity\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/create-checkout-session",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"create-checkout-session"
+							]
+						}
+					},
+					"response": []
+				},
+                  {
+					"name": "Get Transports",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"origin\": \"Tunis\",\n  \"destination\": \"Sousse\",\n  \"date\": \"2025-01-18\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/get-transports/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"get-transports",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+                 {
+					"name": "Create a Payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"payment_id\": 100,\n    \"username\": \"john.doe@example.com\",\n    \"departure\": \"Tunis\",\n    \"destination\": \"Sousse\",\n    \"date\": \"2025-01-18\",\n    \"departure_hour\": \"08:00:00\",\n    \"arrival_hour\": \"10:00:00\",\n    \"price\": 20\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/payments/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"payments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+                {
+					"name": "Get All Payments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/payments/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"payments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+                 {
+					"name": "Get A Payment By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/payments/100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"payments",
+                                "100"
+							]
+						}
+					},
+					"response": []
+				}
+
+			]
+		},
+        {
+			"name": "Admin Endpoints",
+            "description": "Endpoints that are only available to admin users.",
+			"item": [
+				{
+					"name": "Create Travel",
+					"request": {
+						"method": "POST",
+						"header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"travel_id\": 100,\n  \"origin\": \"Tunis\",\n  \"departure_hour\": \"08:00:00\",\n  \"destination\": \"Sousse\",\n  \"arrival_hour\": \"10:00:00\",\n  \"date\": \"2025-01-18\",\n    \"status\": \"scheduled\",\n    \"price\": 20\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+						"url": {
+							"raw": "http://localhost:8000/travels/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"travels",
+                                ""
+							]
+						}
+					},
+					"response": []
+				},
+                {
+					"name": "Get Travel By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/travels/100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"travels",
+                                "100"
+							]
+						}
+					},
+					"response": []
+				},
+                {
+					"name": "Update Travel",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/travels/100/?origin=New Tunis&departure_hour=09:00:00&destination=Sousse&arrival_hour=11:00:00&date=2025-01-18&status=on_schedule&price=30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"travels",
+								"100",
+                                ""
+							],
+                            "query": [
+								{
+									"key": "origin",
+									"value": "New Tunis"
+								},
+								{
+									"key": "departure_hour",
+									"value": "09:00:00"
+								},
+								{
+									"key": "destination",
+									"value": "Sousse"
+								},
+                                {
+									"key": "arrival_hour",
+									"value": "11:00:00"
+								},
+                                {
+									"key": "date",
+									"value": "2025-01-18"
+								},
+                                {
+									"key": "status",
+									"value": "on_schedule"
+								},
+                                {
+									"key": "price",
+									"value": "30"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+                 {
+					"name": "Delete Travel",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/travels/100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"travels",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+                 {
+					"name": "Update Ticket Price",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/update-price/?origin=Tunis&destination=Sousse&date=2025-01-18&departure_hour=08:00:00&arrival_hour=10:00:00&new_price=25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"update-price",
+                                ""
+							],
+							"query": [
+								{
+									"key": "origin",
+									"value": "Tunis"
+								},
+								{
+									"key": "destination",
+									"value": "Sousse"
+								},
+								{
+									"key": "date",
+									"value": "2025-01-18"
+								},
+								{
+									"key": "departure_hour",
+									"value": "08:00:00"
+								},
+								{
+									"key": "arrival_hour",
+									"value": "10:00:00"
+								},
+								{
+									"key": "new_price",
+									"value": "25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+                 {
+					"name": "Get All Travelers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/get-travelers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"get-travelers",
+                                ""
+							]
+						}
+					},
+					"response": []
+				}
+            ]
+		}
+	]
+}

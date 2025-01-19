@@ -1,0 +1,15 @@
+BeautifulSoup
+Pandas
+fastapi
+uvicorn
+pydantic
+passlib
+python-jose
+SQLAlchemy
+psycopg2-binary
+requests
+streamlit
+sendgrid
+python-multipart
+jwt
+stripe
